@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Blog — Caleb Dudley{% endblock title %}
+{% block description %}Writing from Caleb Dudley on software, IoT, and cloud infrastructure.{% endblock description %}
+
+{% block content %}
+<section>
+  <div class="wrap">
+    {% if section.pages %}
+    <ul class="blog-list">
+      {% for page in section.pages %}
+      <li class="blog-post-card">
+        <p class="timeline-meta">{{ page.date | date(format="%B %-d, %Y") }}</p>
+        <h3 class="timeline-role"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h3>
+        <p class="timeline-desc">{{ page.description }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div class="blog-empty">
+      <p>No posts yet — check back soon.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock content %}

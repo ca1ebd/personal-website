@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caleb Dudley — Software Engineer</title>
+  <meta name="description" content="Caleb Dudley — Software Engineer focused on DevOps, Cloud Architecture, Python, Linux, and IoT." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟣</text></svg>" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="wrap">
+      <a class="nav-brand" href="#top">Caleb Dudley</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="blog/">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-decor"></div>
+    <div class="wrap hero-inner">
+      <img class="avatar" src="assets/avatar.jpg" alt="Portrait of Caleb Dudley" />
+      <div class="hero-text">
+        <h1>Caleb Dudley</h1>
+        <span class="eyebrow">Houston, Texas</span>
+        <p class="tagline">DevOps &middot; Cloud Architecture &middot; Python &middot; Linux &middot; Ansible</p>
+        <p class="location">Software Engineer at Chevron &middot; Colorado School of Mines</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/ca1ebd" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/dudleycaleb/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-ghost" href="mailto:calebmdudley@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="section-kicker">About</p>
+      <h2 class="section-title">Software, from embedded to cloud</h2>
+      <div class="about-grid">
+        <div class="about-body">
+          <p>
+            Avid software developer with extensive experience designing software across the
+            stack, beginning in 2015 — skilled in IoT, embedded development, .NET, Python, C++,
+            Linux, and cloud architecture.
+          </p>
+          <p>
+            Founded my first company in 2016, building mobile applications for small businesses
+            and local government. That led into IoT as Lead Developer at Lederbord, a startup
+            building wireless, app-controlled LED scoreboards, where I designed multiple
+            iterations of embedded firmware and native iOS/Android apps, and built out
+            device management and OTA update infrastructure at scale.
+          </p>
+          <p>
+            After graduating from Colorado School of Mines, I continued in IoT at Chevron,
+            building a .NET application for device management and the cloud infrastructure to
+            process telemetry at scale. From there I moved into cloud architecture and DevOps —
+            modernizing infrastructure to enterprise standards, improving security posture and
+            performance, and leading a project to move a high-volume HPC simulation workload to
+            object storage, cutting costs by 50%.
+          </p>
+        </div>
+        <div class="skills-card">
+          <h3>Top Skills</h3>
+          <ul class="chip-list">
+            <li class="chip">Python</li>
+            <li class="chip">.NET Framework</li>
+            <li class="chip">C++</li>
+            <li class="chip">Linux</li>
+            <li class="chip">Cloud-Native Architecture</li>
+            <li class="chip">Azure</li>
+            <li class="chip">Ansible</li>
+            <li class="chip">IoT / Embedded</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <p class="section-kicker">Experience</p>
+      <h2 class="section-title">Where I've worked</h2>
+      <ul class="timeline">
+        <li>
+          <p class="timeline-role">Software Engineer — Chevron</p>
+          <p class="timeline-meta">Jul 2021 &ndash; Present &middot; Houston, TX</p>
+          <p class="timeline-desc">
+            Building end-to-end IoT solutions on Azure (IoT Hub, Device Provisioning Service,
+            serverless Functions, Time Series Insights), with DevOps pipelines and automated
+            device provisioning via Azure DevOps and Ansible.
+          </p>
+        </li>
+        <li>
+          <p class="timeline-role">Lead Developer — Lederbord</p>
+          <p class="timeline-meta">Jul 2016 &ndash; Jul 2021 &middot; Denver Metropolitan Area</p>
+          <p class="timeline-desc">
+            First hardware prototype and app development lead for a wireless, portable,
+            app-controlled LED scoreboard startup — embedded firmware, native mobile apps, and
+            fleet device management at scale.
+          </p>
+        </li>
+        <li>
+          <p class="timeline-role">Software Development Intern — Tyler Technologies</p>
+          <p class="timeline-meta">May 2020 &ndash; Aug 2020 &middot; Lakewood, CO</p>
+          <p class="timeline-desc">
+            Backend contributions to a large ERP codebase for K-12 schools using C#, Angular,
+            and SQL.
+          </p>
+        </li>
+        <li>
+          <p class="timeline-role">Colorado School of Mines</p>
+          <p class="timeline-meta">CS TA &amp; U-CLIMB Mentor &middot; 2018 &ndash; 2019</p>
+          <p class="timeline-desc">
+            Taught and developed curriculum for a Python lab pilot program (later CSCI102), TA'd
+            Intro to CS, and mentored incoming CS students.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="wrap">
+      <p class="section-kicker">Projects</p>
+      <h2 class="section-title">Things I've built</h2>
+      <p class="section-intro">A few projects, most of them built and shipped with an AI pair programmer.</p>
+      <div class="project-grid">
+        <div class="project-card">
+          <span class="project-tag">PWA</span>
+          <h3>Contraction Timer</h3>
+          <p>
+            Offline-first PWA for timing labor contractions — one primary start/stop button, a
+            timeline of past contractions sized by duration, and steppers for correcting a
+            contraction's length or the gap between two.
+          </p>
+          <div class="project-links">
+            <a href="https://contraction-timer.calebdudley.dev" target="_blank" rel="noopener">Live site &rarr;</a>
+            <a href="https://github.com/ca1ebd/contraction-timer" target="_blank" rel="noopener">Source &rarr;</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <span class="project-tag">CLI</span>
+          <h3>updateme</h3>
+          <p>
+            A daily terminal briefing — weather, headlines, and market data, all in one command.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/ca1ebd/updateme" target="_blank" rel="noopener">Source &rarr;</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <span class="project-tag">Container</span>
+          <h3>myworld</h3>
+          <p>
+            My personal containerized environment — an opinionated Ubuntu image with the tools I
+            like using bundled in, starting with vim and updateme.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/ca1ebd/myworld" target="_blank" rel="noopener">Source &rarr;</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <span class="project-tag">Ansible</span>
+          <h3>Lycus</h3>
+          <p>
+            Ansible automation to rebuild my Hermes agent server from scratch once it inevitably
+            breaks — spin up a new instance, pull in customizations, move on.
+          </p>
+          <div class="project-links">
+            <a href="https://github.com/ca1ebd/lycus" target="_blank" rel="noopener">Source &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog-teaser">
+    <div class="wrap">
+      <div class="blog-teaser">
+        <p class="section-kicker">Blog</p>
+        <h2 class="section-title">Writing</h2>
+        <p>Notes on software, IoT, and cloud infrastructure.</p>
+        <a class="btn btn-primary" href="/blog/">Visit the blog</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card">
+        <div>
+          <h2>Let&rsquo;s connect</h2>
+          <p>Check out my GitHub, connect on LinkedIn, or shoot me an email.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://github.com/ca1ebd" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/dudleycaleb/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-ghost" href="mailto:calebmdudley@gmail.com">calebmdudley@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Caleb Dudley</span>
+      <ul class="footer-links">
+        <li><a href="https://github.com/ca1ebd" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/dudleycaleb/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:calebmdudley@gmail.com">Email</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = Array.from(navLinks)
+      .map((link) => document.querySelector(link.getAttribute("href")))
+      .filter(Boolean);
+
+    const setActive = (id) => {
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((entry) => entry.isIntersecting);
+        if (visible.length > 0) {
+          setActive(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  </script>
+</body>
+</html>
