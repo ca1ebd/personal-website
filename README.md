@@ -49,7 +49,7 @@ Serves the site locally at `http://127.0.0.1:1111` with live reload.
 
 Hosted on two Azure Static Web Apps in the `personal-website-rg` resource
 group (Personal subscription): `personal-website` (prod) and
-`personal-website-test` (staging). Deploys run via GitHub Actions:
+`personal-website-test` (test). Deploys run via GitHub Actions:
 
 - `.github/workflows/deploy.yml` — reusable workflow with the actual build
   steps (install Zola from the GitHub release tarball, `zola build
@@ -59,10 +59,10 @@ group (Personal subscription): `personal-website` (prod) and
   `deploy.yml` with the prod hostname
   (`nice-island-07bfc7a0f.7.azurestaticapps.net`) and the
   `AZURE_STATIC_WEB_APPS_API_TOKEN` secret.
-- `.github/workflows/azure-static-web-apps-staging.yml` — push to any other
+- `.github/workflows/azure-static-web-apps-test.yml` — push to any other
   branch calls `deploy.yml` with the test hostname
   (`agreeable-pebble-000b6560f.7.azurestaticapps.net`) and the
-  `AZURE_STATIC_WEB_APPS_API_TOKEN_STAGING` secret.
+  `AZURE_STATIC_WEB_APPS_API_TOKEN_TEST` secret.
 
 The two trigger files only differ in branch filter, hostname, and which
 secret to pass — the actual build/deploy logic lives in one place.
