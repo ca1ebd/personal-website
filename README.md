@@ -47,10 +47,27 @@ Serves the site locally at `http://127.0.0.1:1111` with live reload.
 
 ## Deploy
 
-Hosted on Azure Static Web Apps (`personal-website` app, `personal-website-rg`
-resource group, Personal subscription), deployed directly via the SWA CLI (no
-GitHub integration — deployed from local files with a deployment token, not a
-connected repo).
+Hosted on two Azure Static Web Apps in the `personal-website-rg` resource
+group (Personal subscription): `personal-website` (prod) and
+`personal-website-test` (staging). Deploys run via GitHub Actions, mirroring
+the contraction-timer repo's convention:
+
+- `.github/workflows/azure-static-web-apps.yml` — push to `main` deploys to
+  prod (`nice-island-07bfc7a0f.7.azurestaticapps.net`)
+- `.github/workflows/azure-static-web-apps-staging.yml` — push to any other
+  branch deploys to test (`agreeable-pebble-000b6560f.7.azurestaticapps.net`),
+  building with `zola build --base-url` pointed at the test hostname
+
+Both workflows install Zola directly from the GitHub release tarball (no
+Node/npm involved in the build), then deploy the `public/` output with
+`Azure/static-web-apps-deploy@v1` using a deployment token stored as a repo
+secret (`AZURE_STATIC_WEB_APPS_API_TOKEN` / `_STAGING`).
+
+Neither Static Web App resource is itself "linked" to the GitHub repo in
+Azure — the workflows authenticate purely via the deployment token secrets,
+so there's nothing to reconfigure in the Azure portal if the repo moves.
+
+### Manual deploy (fallback)
 
 ```sh
 zola build
