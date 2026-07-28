@@ -49,19 +49,23 @@ Serves the site locally at `http://127.0.0.1:1111` with live reload.
 
 Hosted on two Azure Static Web Apps in the `personal-website-rg` resource
 group (Personal subscription): `personal-website` (prod) and
-`personal-website-test` (staging). Deploys run via GitHub Actions, mirroring
-the contraction-timer repo's convention:
+`personal-website-test` (staging). Deploys run via GitHub Actions:
 
-- `.github/workflows/azure-static-web-apps.yml` — push to `main` deploys to
-  prod (`nice-island-07bfc7a0f.7.azurestaticapps.net`)
+- `.github/workflows/deploy.yml` — reusable workflow with the actual build
+  steps (install Zola from the GitHub release tarball, `zola build
+  --base-url`, deploy `public/` with `Azure/static-web-apps-deploy@v1`). Not
+  triggered directly.
+- `.github/workflows/azure-static-web-apps.yml` — push to `main` calls
+  `deploy.yml` with the prod hostname
+  (`nice-island-07bfc7a0f.7.azurestaticapps.net`) and the
+  `AZURE_STATIC_WEB_APPS_API_TOKEN` secret.
 - `.github/workflows/azure-static-web-apps-staging.yml` — push to any other
-  branch deploys to test (`agreeable-pebble-000b6560f.7.azurestaticapps.net`),
-  building with `zola build --base-url` pointed at the test hostname
+  branch calls `deploy.yml` with the test hostname
+  (`agreeable-pebble-000b6560f.7.azurestaticapps.net`) and the
+  `AZURE_STATIC_WEB_APPS_API_TOKEN_STAGING` secret.
 
-Both workflows install Zola directly from the GitHub release tarball (no
-Node/npm involved in the build), then deploy the `public/` output with
-`Azure/static-web-apps-deploy@v1` using a deployment token stored as a repo
-secret (`AZURE_STATIC_WEB_APPS_API_TOKEN` / `_STAGING`).
+The two trigger files only differ in branch filter, hostname, and which
+secret to pass — the actual build/deploy logic lives in one place.
 
 Neither Static Web App resource is itself "linked" to the GitHub repo in
 Azure — the workflows authenticate purely via the deployment token secrets,

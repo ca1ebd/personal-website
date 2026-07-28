@@ -1,0 +1,40 @@
+name: Deploy (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      environment_name:
+        description: Human-readable name shown in the job title (e.g. "production", "staging")
+        required: true
+        type: string
+      base_url:
+        description: Zola --base-url for this environment's deployed hostname
+        required: true
+        type: string
+    secrets:
+      azure_static_web_apps_api_token:
+        required: true
+
+jobs:
+  build_and_deploy_job:
+    runs-on: ubuntu-latest
+    name: Build and Deploy (${{ inputs.environment_name }})
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+      - name: Install Zola
+        run: |
+          curl -sL https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          sudo mv zola /usr/local/bin/zola
+      - name: Build
+        run: zola build --base-url ${{ inputs.base_url }}
+      - name: Deploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.azure_static_web_apps_api_token }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          app_location: "public"
+          output_location: ""
+          skip_app_build: true
