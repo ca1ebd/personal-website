@@ -1,20 +1,37 @@
 +++
-title = "Launching my personal website"
+title = "AI-enabled development workflow for infrastructure and automation"
 date = 2026-07-28
 description = ""
-draft = true
 +++
 
-I'm excited to finally launch a personal website instead of just pointing people at LinkedIn. I've heard an optimistic vision for the AI future - everybody is able to self-host open source tools and build their own software to get free of big tech control. So I guess this is me doing my part (wink)
+This past week I decided to set up some monitoring for a family member's small business that I support. What I deployed isn't all that interesting, an open source monitoring solution (Uptime Kuma) that is able to monitor the business website, email servers, VPN, NAS, etc. But this project has allowed me to validate a new process I've been working on to best leverage AI tools for cloud infrastructure work:
 
-Built it the same way as the last few side projects: primarily driving Claude Code running on my project VPS from my phone. Bio, work history, a projects page linking out to the other things I've been building.
+1. Detailed spec first.
 
-Here's what's running under the hood:
+Before provisioning anything, I iterated with AI tools to generate a detailed spec which laid out the stack, tools and design choices up front. We're deploying Uptime Kuma on an Azure VM with x SKU, running Ubuntu. And then detailing network access, authn/authz, etc.
 
-* Blog: running on [Zola](https://www.getzola.org/), a Rust-based static site generator. I write a post in markdown, it renders to plain HTML at build time.
-* CI/CD: same pattern as the contraction timer — merge to main deploys prod, push to any other branch deploys to a test environment automatically. Two separate Azure Static Web Apps, one shared GitHub Actions. This works well for my workflow to collaborate with AI. 
-* Link previews: I've added Open Graph tags so sharing the link doesn't just show bare text. I'd always wondered how those link previews worked... now I know. I even found a cool tool that will show you what they look like on different platforms: [opengraph.xyz](https://www.opengraph.xyz/url/https%3A%2F%2Fcalebdudley.dev)
+2. First pass deployment.
 
-It's nothing crazy, but it feels to good to have a platform for sharing that I control.
+Had the AI provision a fresh VM and implement that spec one step at a time. Every place reality diverged from the spec — a bug in my own spec, a platform quirk, a security tradeoff worth reconsidering — got captured live in a running changes doc, with the reasoning behind it. Then reconciled that back into the spec so it included the new learnings.
 
-Any bugs I missed? Or SEO advice so it shows up when someone searches me?
+3. A second spec, for the automation itself.
+
+Once the first pass deployment was was functional and met the spec, I had it write a new spec — this time for automating the whole thing with Terraform + Ansible.
+
+4. Build automation, validate with a second instance.
+
+Implemented that spec, then directed the AI tools to run the automation to stand up a second, fully isolated instance and compare it against the original.
+
+5. Iterate until it's a precise replica.
+
+Found real bugs this way — the kind a human following the spec alone would probably also hit. Each one went back into the changes doc and got fixed in the automation itself, not patched around.
+
+6. Cut over.
+
+Once the automated deployment was a verified, precise replica of the hand-built one, we swapped it in for the real thing. I kept the original around as a rollback option until I could verify, and then deleted it.
+
+I'm happy with this process because I want automation to boot, but starting with automation tools adds another layer to trudge through when validating and testing the core idea. It also models how I would approach automation work pre-AI, it just leverages AI to do the boring stuff and allows me to focus on the more interesting tradeoffs and design questions.
+
+I also did ~96% of the work from my phone in anywhere from 5-30 minute sessions while riding in the car or in between chores/activities for the day...
+
+Anyone else have learnings on using AI for DevOps/Automation/Infrastructure work?
