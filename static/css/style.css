@@ -104,48 +104,15 @@ a {
   background: radial-gradient(120% 140% at 15% -10%, var(--purple-700) 0%, var(--purple-900) 45%, var(--purple-950) 75%);
 }
 
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(2px);
-  opacity: 0.55;
-}
-
-.hero::before {
-  width: 340px;
-  height: 340px;
-  right: -90px;
-  top: -120px;
-  background: radial-gradient(circle at 35% 35%, var(--pink-500), transparent 70%);
-}
-
-.hero::after {
-  width: 260px;
-  height: 260px;
-  left: -80px;
-  bottom: -100px;
-  background: radial-gradient(circle at 40% 40%, var(--orange-400), transparent 70%);
-  opacity: 0.35;
+.hero.hero-image {
+  background-image: url("../assets/hero-banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero.hero-sm {
   padding: 44px 0 36px;
-}
-
-.hero.hero-sm::before {
-  width: 200px;
-  height: 200px;
-  right: -60px;
-  top: -80px;
-}
-
-.hero.hero-sm::after {
-  width: 150px;
-  height: 150px;
-  left: -50px;
-  bottom: -70px;
 }
 
 .hero-decor {
@@ -667,6 +634,10 @@ footer .wrap {
 }
 
 @media (max-width: 720px) {
+  .hero.hero-image {
+    background-image: radial-gradient(120% 140% at 15% -10%, var(--purple-700) 0%, var(--purple-900) 45%, var(--purple-950) 75%);
+  }
+
   section {
     padding: 40px 0;
   }
