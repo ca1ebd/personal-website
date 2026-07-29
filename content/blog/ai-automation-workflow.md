@@ -2,6 +2,7 @@
 title = "AI-enabled development workflow for infrastructure and automation"
 date = 2026-07-28
 description = ""
+draft = true
 +++
 
 This past week I decided to set up some monitoring for a family member's small business that I support. What I deployed isn't all that interesting, an open source monitoring solution (Uptime Kuma) that is able to monitor the business website, email servers, VPN, NAS, etc. But this project has allowed me to validate a new process I've been working on to best leverage AI tools for cloud infrastructure work:
