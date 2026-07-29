@@ -1,6 +1,6 @@
-base_url = "https://nice-island-07bfc7a0f.7.azurestaticapps.net"
+base_url = "https://calebdudley.dev"
 title = "Caleb Dudley"
-description = "Caleb Dudley — Software Engineer focused on DevOps, Cloud Architecture, Python, Linux, and IoT."
+description = "Caleb Dudley — Software Engineer focused on DevOps, .NET, Python, Linux, and IoT."
 compile_sass = false
 build_search_index = false
 generate_feeds = true

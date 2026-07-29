@@ -10,6 +10,6 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       environment_name: test
-      base_url: https://agreeable-pebble-000b6560f.7.azurestaticapps.net
+      base_url: https://test.calebdudley.dev
     secrets:
       azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_TEST }}
