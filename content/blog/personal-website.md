@@ -2,6 +2,7 @@
 title = "Launching my personal website"
 date = 2026-07-28
 description = "Staking out my claim on the internet: launching a personal website."
+draft = true
 +++
 
 I'm excited to finally launch a personal website instead of just pointing people at LinkedIn. 
