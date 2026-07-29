@@ -10,7 +10,9 @@ markdown files, rendered into plain HTML at build time.
 
 - `static/index.html` — home page (hero, about, experience, projects, blog teaser, contact)
 - `static/css/style.css` — shared styles (used by both the homepage and the blog)
-- `static/assets/` — images
+- `static/assets/avatar.jpg` — profile photo
+- `static/assets/hero-banner.png` — hero background illustration (see "Hero background" below)
+- `static/favicon.svg`, `static/og-image.png` — favicon and social-preview card (see "Social previews" below)
 - `static/404.html`, `static/staticwebapp.config.json` — passthrough files
 - `content/blog/` — blog posts, one markdown file per post
 - `templates/` — Zola/Tera templates (`base.html`, `blog_index.html`, `blog_post.html`)
@@ -37,6 +39,11 @@ Post body in markdown.
 Run `zola build` and it'll show up on `/blog/`, newest first, with an RSS feed
 at `/blog/rss.xml` — no other file to edit.
 
+Add `draft = true` to the frontmatter to keep working on a post without
+publishing it — a plain `zola build` (what both CI workflows run) skips
+draft pages entirely, on prod and test alike. Preview one locally with
+`zola build --drafts` or `zola serve --drafts`.
+
 ## Develop
 
 ```sh
@@ -44,6 +51,45 @@ zola serve
 ```
 
 Serves the site locally at `http://127.0.0.1:1111` with live reload.
+
+## Hero background
+
+`static/assets/hero-banner.png` is a custom-built illustration (solid
+gradient circles, star bursts, chevrons, a wavy line, a quarter-pie corner
+piece), not a photo — rendered from an HTML/CSS/SVG mockup and screenshotted,
+not hand-drawn. It's a deliberate design choice to keep it entirely flat
+color: no blur or low-opacity "haze" anywhere in it or in the CSS that
+places it (`.hero-image` in `style.css`), and every shape is positioned
+outside the roughly x 650–1600 (of the 2400px-wide image) band that the
+avatar/name/tagline/buttons land in under `background-size: cover` +
+`background-position: center`, so nothing ever renders behind the text.
+
+On mobile (≤720px) it falls back to a plain gradient instead — the
+banner's wide aspect ratio crops badly into a tall mobile hero and loses
+most of the decoration anyway, so it's not worth forcing.
+
+## Social previews
+
+`static/favicon.svg` and `static/og-image.png` use the same flat solid-shape
+style as the hero. `og-image.png` was built the same way (HTML/CSS mockup,
+screenshotted to a 1200x630 PNG) with its own decoration confined to the
+top/bottom margins instead of the sides, since the card's own layout puts
+text where the hero's side-margins would be.
+
+The homepage's Open Graph/Twitter tags (`static/index.html`) are hardcoded
+absolute URLs to `https://calebdudley.dev/...` — it's a static passthrough
+file, not templated per environment like the blog pages are (which use
+Zola's `current_url`/`config.base_url`, so they correctly point at whichever
+environment served them). This means the homepage's social preview only
+ever reflects prod, regardless of which environment actually rendered the
+page — a change to `og-image.png` isn't visible to any OG scraper until
+it's merged to `main` and deployed there, even though the file itself
+updates on test immediately.
+
+OG-preview tools (opengraph.xyz, Facebook's Sharing Debugger, LinkedIn's
+Post Inspector, etc.) cache scraped results per-URL and won't show a
+change just because the origin updated — append a throwaway query string
+(`?v=2`) to force most of them to re-fetch.
 
 ## Deploy
 
