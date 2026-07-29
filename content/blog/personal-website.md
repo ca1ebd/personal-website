@@ -7,7 +7,7 @@ description = "Staking out my claim on the internet: launching a personal websit
 I'm staking out my claim on the internet: finally launching a personal website instead of just pointing people at LinkedIn. 
 
 
-I've heard an optimistic vision for the AI future - everybody is able to self-host open source tools and build their own software to get free of big tech control. So I guess this is me doing my part (wink)
+I've heard an optimistic vision for the AI future - everybody is able to self-host open source tools and build their own software to get free of big tech control. So I guess this is me doing my part 😉
 
 
 Built it the same way as the last few side projects: primarily driving Claude Code running on my project VPS from my phone. Bio, work history, a projects page linking out to the other things I've been building.
