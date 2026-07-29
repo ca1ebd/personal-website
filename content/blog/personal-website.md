@@ -2,10 +2,9 @@
 title = "Launching my personal website"
 date = 2026-07-28
 description = "Staking out my claim on the internet: launching a personal website."
-draft = true
 +++
 
-I'm excited to finally launch a personal website instead of just pointing people at LinkedIn. 
+I'm staking out my claim on the internet: finally launching a personal website instead of just pointing people at LinkedIn. 
 
 
 I've heard an optimistic vision for the AI future - everybody is able to self-host open source tools and build their own software to get free of big tech control. So I guess this is me doing my part (wink)
