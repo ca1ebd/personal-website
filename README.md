@@ -56,13 +56,19 @@ group (Personal subscription): `personal-website` (prod) and
   --base-url`, deploy `public/` with `Azure/static-web-apps-deploy@v1`). Not
   triggered directly.
 - `.github/workflows/azure-static-web-apps.yml` — push to `main` calls
-  `deploy.yml` with the prod hostname
-  (`nice-island-07bfc7a0f.7.azurestaticapps.net`) and the
+  `deploy.yml` with the prod domain (`https://calebdudley.dev`) and the
   `AZURE_STATIC_WEB_APPS_API_TOKEN` secret.
 - `.github/workflows/azure-static-web-apps-test.yml` — push to any other
-  branch calls `deploy.yml` with the test hostname
-  (`agreeable-pebble-000b6560f.7.azurestaticapps.net`) and the
+  branch calls `deploy.yml` with the test domain
+  (`https://test.calebdudley.dev`) and the
   `AZURE_STATIC_WEB_APPS_API_TOKEN_TEST` secret.
+
+`base_url` here has to be the real custom domain, not the raw
+`*.azurestaticapps.net` hostname — Zola bakes `base_url` into every
+absolute link it generates (post permalinks, canonical/OG URLs), so
+getting this wrong doesn't just show the wrong URL in a meta tag, it
+sends real navigation (e.g. clicking a post on the blog index) across to
+the Azure-assigned hostname instead of staying on the custom domain.
 
 The two trigger files only differ in branch filter, hostname, and which
 secret to pass — the actual build/deploy logic lives in one place.
@@ -83,16 +89,8 @@ npx @azure/static-web-apps-cli deploy ./public --env production --deployment-tok
 Run the deploy command from outside the project directory (a `swa deploy`
 quirk — it errors if cwd is inside the folder being deployed).
 
-DNS for `calebdudley.dev` (prod) and `test.calebdudley.dev` (test) is
-managed centrally in [caleb-dudley-dev](../caleb-dudley-dev) via Terraform,
-pointing at this app's default hostname
-(`nice-island-07bfc7a0f.7.azurestaticapps.net`) — see that repo's README
-for the full project inventory and `docs/adding-a-project.md` for how to
-change it.
-
-Still outstanding on the Azure side: `calebdudley.dev` and
-`test.calebdudley.dev` need to be added as custom domains on this Static
-Web App in the Azure portal. `calebdudley.dev` is proxied through
-Cloudflare (required for a CNAME to work at the domain apex — see
-caleb-dudley-dev's README), so it needs **TXT-based** validation, not
-CNAME-based.
+DNS and the Azure-side custom domain bindings for `calebdudley.dev` (prod)
+and `test.calebdudley.dev` (test) are both live, managed via Terraform in
+[caleb-dudley-dev](../caleb-dudley-dev) — see that repo's README for the
+full project inventory, the Cloudflare/Azure validation details, and
+`docs/adding-a-project.md` for how to change it.
