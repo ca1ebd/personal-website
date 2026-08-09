@@ -63,11 +63,20 @@ a {
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 700;
   letter-spacing: -0.02em;
   text-decoration: none;
   font-size: 1.05rem;
   white-space: nowrap;
+}
+
+.nav-logo {
+  display: block;
+  border-radius: 7px;
+  flex-shrink: 0;
 }
 
 .nav-links {
@@ -494,6 +503,18 @@ footer .wrap {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-logo {
+  display: block;
+  border-radius: 5px;
+  flex-shrink: 0;
 }
 
 .footer-links {
