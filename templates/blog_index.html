@@ -15,7 +15,7 @@
       {% for page in section.pages %}
       <li class="blog-post-card">
         <p class="timeline-meta">{{ page.date | date(format="%B %-d, %Y") }}</p>
-        <h3 class="timeline-role"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h3>
+        <h3 class="timeline-role"><a class="stretched-link" href="{{ page.permalink | safe }}">{{ page.title }}</a></h3>
         <p class="timeline-desc">{{ page.description }}</p>
       </li>
       {% endfor %}
