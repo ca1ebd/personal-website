@@ -525,10 +525,17 @@ footer .wrap {
 }
 
 .blog-post-card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
   padding: 24px;
+}
+
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 .blog-empty {
