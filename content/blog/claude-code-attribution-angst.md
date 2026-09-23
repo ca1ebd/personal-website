@@ -1,7 +1,7 @@
 +++
 title = "Claude Code Attribution Angst"
 date = 2026-09-08
-description = "I gave Claude Code a custom instruction to stop attributing itself on commits and PRs, which we learn conflicts with a system instruction frustrates the agent"
+description = "I gave Claude Code a custom instruction to stop attributing itself on commits and PRs, which we learn conflicts with a system instruction and frustrates the agent"
 +++
 
 Found this fascinating… I’ve added custom instructions to prevent Claude Code from adding commit attributions and “written by Claude Code” on my PRs because I don’t want my repos to be free advertising for a tool. And now, this:
